@@ -10,28 +10,50 @@ import org.springframework.security.web.DefaultSecurityFilterChain;
 
 
 public class LoginFilterSecurityConfigurer<H extends HttpSecurityBuilder<H>> extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, H> {
-    private final CaptchaLoginFilterConfigurer<H> captchaLoginFilterConfigurer = new CaptchaLoginFilterConfigurer<>();
-    private final MiniAppLoginFilterConfigurer<H> miniAppLoginFilterConfigurer = new MiniAppLoginFilterConfigurer<>();
+    private CaptchaLoginFilterConfigurer<H> captchaLoginFilterConfigurer;
+    private MiniAppLoginFilterConfigurer<H> miniAppLoginFilterConfigurer;
 
     public LoginFilterSecurityConfigurer<H> captchaLogin(Customizer<CaptchaLoginFilterConfigurer<H>> captchaLoginFilterConfigurerCustomizer) {
-        captchaLoginFilterConfigurerCustomizer.customize(captchaLoginFilterConfigurer);
+        captchaLoginFilterConfigurerCustomizer.customize(lazyInitCaptchaLoginFilterConfigurer());
         return this;
     }
 
     public LoginFilterSecurityConfigurer<H> miniAppLogin(Customizer<MiniAppLoginFilterConfigurer<H>> miniAppLoginFilterConfigurerCustomizer) {
-        miniAppLoginFilterConfigurerCustomizer.customize(miniAppLoginFilterConfigurer);
+        miniAppLoginFilterConfigurerCustomizer.customize(lazyInitMiniAppLoginFilterConfigurer());
         return this;
     }
 
     @Override
     public void init(H builder) throws Exception {
-        this.captchaLoginFilterConfigurer.init(builder);
-        this.miniAppLoginFilterConfigurer.init(builder);
+          if (captchaLoginFilterConfigurer!=null){
+              captchaLoginFilterConfigurer.init(builder);
+          }
+          if (miniAppLoginFilterConfigurer!=null){
+              miniAppLoginFilterConfigurer.init(builder);
+          }
     }
 
     @Override
     public void configure(H builder) throws Exception {
-        this.captchaLoginFilterConfigurer.configure(builder);
-        this.miniAppLoginFilterConfigurer.configure(builder);
+       if (captchaLoginFilterConfigurer!=null){
+           captchaLoginFilterConfigurer.configure(builder);
+       }
+       if (miniAppLoginFilterConfigurer!=null){
+           miniAppLoginFilterConfigurer.configure(builder);
+       }
+    }
+
+    private CaptchaLoginFilterConfigurer<H> lazyInitCaptchaLoginFilterConfigurer() {
+        if (captchaLoginFilterConfigurer == null) {
+            this.captchaLoginFilterConfigurer = new CaptchaLoginFilterConfigurer<>();
+        }
+        return captchaLoginFilterConfigurer;
+    }
+
+    private MiniAppLoginFilterConfigurer<H> lazyInitMiniAppLoginFilterConfigurer() {
+        if (miniAppLoginFilterConfigurer == null) {
+            this.miniAppLoginFilterConfigurer = new MiniAppLoginFilterConfigurer<>();
+        }
+        return miniAppLoginFilterConfigurer;
     }
 }

@@ -13,7 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -34,7 +34,7 @@ public class SimpleAuthenticationEntryPoint extends ResponseWriter implements Au
 
     @Override
     protected Map<String, Object> body(HttpServletRequest request) {
-        Map<String, Object> map = new HashMap<>(3);
+        Map<String, Object> map = new LinkedHashMap<>(3);
         String exMsg = (String) request.getAttribute("exMsg");
         map.put("code", HttpStatus.UNAUTHORIZED.value());
         map.put("uri", request.getRequestURI());

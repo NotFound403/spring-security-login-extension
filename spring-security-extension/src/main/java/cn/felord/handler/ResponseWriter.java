@@ -3,7 +3,6 @@ package cn.felord.handler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.http.MediaType;
-import org.springframework.security.jackson2.SecurityJackson2Modules;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,10 +16,7 @@ import java.util.logging.Logger;
 public abstract class ResponseWriter {
     private static final Logger log = Logger.getLogger(ResponseWriter.class.getSimpleName());
     private final ObjectMapper objectMapper = new ObjectMapper()
-            .registerModule(new JavaTimeModule())
-            .registerModules(
-                    SecurityJackson2Modules.getModules(this.getClass().getClassLoader())
-            );
+            .registerModule(new JavaTimeModule());
 
     /**
      * Write.

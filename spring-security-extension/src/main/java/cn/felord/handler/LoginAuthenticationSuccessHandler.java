@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -37,7 +37,7 @@ public class LoginAuthenticationSuccessHandler extends ResponseWriter implements
     protected Map<String, Object> body(HttpServletRequest request) {
         Authentication authentication = (Authentication) request.getAttribute("authentication");
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        Map<String,Object> map = new HashMap<>(3);
+        Map<String,Object> map = new LinkedHashMap<>(3);
         map.put("code", HttpStatus.OK.value());
         map.put("data",jwtTokenGenerator.tokenResponse(userDetails));
         map.put("message",HttpStatus.OK.getReasonPhrase());

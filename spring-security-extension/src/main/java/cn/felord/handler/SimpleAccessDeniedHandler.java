@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -27,7 +27,7 @@ public class SimpleAccessDeniedHandler extends ResponseWriter implements AccessD
 
     @Override
     protected Map<String, Object> body(HttpServletRequest request) {
-        Map<String, Object> map = new HashMap<>(3);
+        Map<String, Object> map = new LinkedHashMap<>(3);
         map.put("code", HttpStatus.FORBIDDEN.value());
         map.put("uri", request.getRequestURI());
         map.put("message", HttpStatus.FORBIDDEN.getReasonPhrase());

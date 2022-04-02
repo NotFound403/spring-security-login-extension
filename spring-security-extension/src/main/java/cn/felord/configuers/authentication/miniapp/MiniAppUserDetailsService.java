@@ -1,7 +1,6 @@
 package cn.felord.configuers.authentication.miniapp;
 
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * The interface Channel user details service.
@@ -9,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * @author felord.cn
  * @since 1.0.8.RELEASE
  */
-public interface MiniAppUserDetailsService extends UserDetailsService {
+public interface MiniAppUserDetailsService {
 
     /**
      * 小程序在微信登录成功后发起后端登录用来注册的方法
