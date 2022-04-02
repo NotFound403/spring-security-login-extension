@@ -69,7 +69,7 @@ public class WebSecurityConfiguration {
                                         .jwtTokenGenerator(this::tokenResponseMock)
                         //todo 其它配置省略……
                 )
-                // 小程序登录
+                // 小程序登录 同时支持多个小程序
                 .miniAppLogin(miniAppLoginConfigurer -> miniAppLoginConfigurer
                                 // 根据请求携带的clientid 查询小程序的appid和secret 1 在此处配置 优先级最高 2 注册为Spring Bean 可以免配置
                                 .miniAppClientService(this::miniAppClientMock)
