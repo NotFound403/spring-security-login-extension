@@ -54,11 +54,15 @@ public class WebSecurityConfiguration {
      */
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-
-
-        http.csrf().disable().authorizeRequests().mvcMatchers("/foo/**").access("hasAuthority('ROLE_USER')").anyRequest().authenticated().and()
+        http.csrf().disable()
+                .authorizeRequests()
+                .mvcMatchers("/foo/**")
+                .access("hasAuthority('ROLE_USER')").anyRequest().authenticated()
+                .and()
                 // 默认form表单登录
-                .formLogin().and().apply(new LoginFilterSecurityConfigurer<>())
+                .formLogin()
+                .and()
+                .apply(new LoginFilterSecurityConfigurer<>())
                 // 验证码登录
                 .captchaLogin(captchaLoginConfigurer ->
                                 // 验证码校验 1 在此处配置 优先级最高 2 注册为Spring Bean 可以免配置
