@@ -20,10 +20,11 @@
 [Spring Security 与 OAuth2](https://blog.csdn.net/qq_35067322/category_11691173.html)专题教程
 
 ![](./tutorial.png)
-#### DEMO
+#### OAuth2 DEMO
 - Github：https://github.com/NotFound403/felord/spring-security-oauth2-tutorial 
 - Gitee： https://gitee.com/felord/spring-security-oauth2-tutorial
-目前的分支有：
+
+**目前的分支有**：
 - [x] **main**  体验Gitee三方授权。
 - [x] **wechat**  微信网页授权实现，对非标准OAuth2的定制改造，强调自定义能力。
 - [x] **oauth2client** 体验Spring Security OAuth2 Client功能。
