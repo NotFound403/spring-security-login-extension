@@ -18,7 +18,8 @@
 关注公众号：码农小胖哥  回复 **2021开工福利** 和 **2022开工福利** 获取原创50万字的PDF。
 ### OAuth2 系列教程
 [Spring Security 与 OAuth2](https://blog.csdn.net/qq_35067322/category_11691173.html)专题教程
-<img src="tutorial.png" style="zoom:75%;" />
+
+![](./tutorial.png)
 #### DEMO
 - Github：https://github.com/NotFound403/felord/spring-security-oauth2-tutorial 
 - Gitee： https://gitee.com/felord/spring-security-oauth2-tutorial
@@ -35,6 +36,43 @@
 - [ ] **其它新分支持续更新中**
 #### 目录（更新中）
 
+- [1-Spring Security OAuth2专栏介绍](https://blog.csdn.net/qq_35067322/article/details/123536510)
+- [2-直观体验OAuth2](https://felord.blog.csdn.net/article/details/123536984)
+- [3-OAuth2登录流程分析](https://felord.blog.csdn.net/article/details/123537245)
+- [4-OAuth2.0协议简单认识](https://felord.blog.csdn.net/article/details/123537835)
+- [5-OAuth2.1的已知变动](https://felord.blog.csdn.net/article/details/123538070)
+- [6-Spring Security OAuth2配置项详解](https://felord.blog.csdn.net/article/details/123538253)
+- [7-OAuth2AuthorizationRequestRedirectFilter](https://felord.blog.csdn.net/article/details/123538416)
+- [8-OAuth2LoginAuthenticationFilter](https://felord.blog.csdn.net/article/details/123538530)
+- [9-Spring Boot中OAuth2的自动配置](https://felord.blog.csdn.net/article/details/123538820)
+- [10-微信OAuth2授权登录](https://felord.blog.csdn.net/article/details/123538976)
+- [11-OAuth2登录的配置逻辑](https://felord.blog.csdn.net/article/details/123539201)
+- [12-OAuth2LoginConfigurer的初始化](https://felord.blog.csdn.net/article/details/123539323)
+- [13-OAuth2LoginConfigurer的配置](https://felord.blog.csdn.net/article/details/123539955)
+- [14-OAuth2ClientConfigurer](https://felord.blog.csdn.net/article/details/123540308)
+- [15-JOSE规范](https://felord.blog.csdn.net/article/details/123540390)
+- [16-Spring Security中的JOSE类库](https://felord.blog.csdn.net/article/details/123540550)
+- [17-什么是资源服务器](https://felord.blog.csdn.net/article/details/123540636)
+- [18-Spring Security中的资源服务器](https://felord.blog.csdn.net/article/details/123540672)
+- [19-Spring Security资源服务器配置详解](https://felord.blog.csdn.net/article/details/123540727)
+- [20-BearerTokenAuthenticationFilter](https://felord.blog.csdn.net/article/details/123540745)
+- [21-Spring Authorization Server介绍](https://felord.blog.csdn.net/article/details/123544148)
+- [22-Spring Authorization Server初体验](https://felord.blog.csdn.net/article/details/123551894)
+- [23-Spring Authorization Server结合客户端](https://felord.blog.csdn.net/article/details/123569931)
+- [24-Spring Authorization Server执行日志分析](https://felord.blog.csdn.net/article/details/123573929)
+- [25-Spring Authorization Server的配置总览](https://felord.blog.csdn.net/article/details/123600038)
+- [26-ProviderContextFilter](https://felord.blog.csdn.net/article/details/123610574)
+- [27-令牌自省OAuth2TokenIntrospectionEndpointFilter](https://blog.csdn.net/qq_35067322/article/details/123634847)
+- [28-JWKSet公钥令牌端点过滤器](https://blog.csdn.net/qq_35067322/article/details/123656408)
+- [29-授权服务器配置信息端点过滤器](https://blog.csdn.net/qq_35067322/article/details/123656531)
+- [30-OAuth2授权端点配置类](https://blog.csdn.net/qq_35067322/article/details/123685646)
+- [31-授权服务器如何处理客户端授权请求](https://blog.csdn.net/qq_35067322/article/details/123712758)
+- [32-Spring Authorization Server 0.2.3 的变化](https://blog.csdn.net/qq_35067322/article/details/123742600)
+- [33-授权码授权请求的具体逻辑](https://felord.blog.csdn.net/article/details/123795807)
+- [34-自定义OAuth2授权确认页面](https://felord.blog.csdn.net/article/details/123821842)
+- [35-OAuth2授权服务器客户端认证配置](https://felord.blog.csdn.net/article/details/123871892)
+- [36-OAuth2客户端认证过滤器详解](https://felord.blog.csdn.net/article/details/123899496)
+- 未上架，待补充 [催更](https://asset.felord.cn/blog/20210224102609.png)
 ## 登录方式
 登录方式有三种。
 ### 普通登录
