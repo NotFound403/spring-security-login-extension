@@ -131,8 +131,4 @@ Content-Type: application/json
 
 ### JWT 密钥证书
 
-利用Keytool工具生成，采用RSA算法时为：
-
-```
- keytool -genkey -alias nashi  -keyalg RSA -storetype PKCS12 -keysize 2048 -validity 365 -keystore /path/keystores/jwt.jks -storepass Nashi6x123akg15v13  -dname "CN=(Nashi), OU=(Nashi), O=(Nashi), L=(zz), ST=(hn), C=(cn)"
-```
+利用Keytool工具生成，采用RSA算法，以前文章有介绍，自己找找。
