@@ -1,7 +1,7 @@
 ## Spring Security 登录插件
 灵活、无侵入、可插拔，这么牛，必须Star一个！
 ## 使用方法
-自行使用Maven`mvn install`到本地仓库，然后引入：
+自行使用Maven命令`mvn install`到本地仓库，然后引入：
 ```xml
         <dependency>
             <groupId>cn.felord</groupId>
