@@ -1,7 +1,8 @@
-## Spring Security 登录插件
+##  :rocket: Spring Security 登录插件
 灵活、无侵入、可插拔，这么牛，必须Star一个！
 ## 使用方法
-> 这个仅仅作为Spring Security的一个扩展，不会侵入你原有的权限体系。你需要引入**Spring Boot Starter Security**。 
+>  :tw-1f4cc: 这个仅仅作为 **Spring Security** 的一个扩展，不会侵入你原有的权限体系。你需要引入**Spring Boot Starter Security**。 
+
 自行使用Maven命令`mvn install`到本地仓库，然后引入：
 ```xml
         <dependency>
