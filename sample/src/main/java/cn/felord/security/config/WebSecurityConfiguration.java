@@ -61,6 +61,7 @@ public class WebSecurityConfiguration {
                 .and()
                 // 默认form表单登录
                 .formLogin()
+                //*******************************************上面是传统玩法*************************************************
                 .and()
                 .apply(new LoginFilterSecurityConfigurer<>())
                 // 验证码登录
@@ -100,6 +101,7 @@ public class WebSecurityConfiguration {
 
         @Override
         public String get(String cacheKey) {
+            // 模拟 sessionkey 缓存
             return "xxxxxxxxxx";
         }
     }
@@ -107,7 +109,7 @@ public class WebSecurityConfiguration {
     static class MiniAppUserDetailsServiceMock implements MiniAppUserDetailsService {
         @Override
         public UserDetails register(MiniAppRequest request) {
-            return // 用户名
+            return // 模拟 微信小程序用户注册
                     User.withUsername(request.getOpenId())
                             // 密码
                             .password("password")
@@ -117,7 +119,7 @@ public class WebSecurityConfiguration {
 
         @Override
         public UserDetails loadByOpenId(String clientId, String openId) {
-            return // 用户名
+            return // 模拟 根据openid 查询 小程序用户信息
                     User.withUsername(openId)
                             // 密码
                             .password("password")
