@@ -1,6 +1,8 @@
-## Spring Security 登录插件
-灵活、无侵入、可插拔，这么牛，必须Star一个！
+#  :rocket: Spring Security 登录插件
+灵活、无侵入、可插拔，这么牛，必须Star一个 :star: ！
 ## 使用方法
+>  :tw-1f4cc: 这个仅仅作为 **Spring Security** 的一个扩展，不会侵入你原有的权限体系。你需要引入**Spring Boot Starter Security**。 
+
 自行使用Maven命令`mvn install`到本地仓库，然后引入：
 ```xml
         <dependency>
@@ -73,6 +75,8 @@
 - [34-自定义OAuth2授权确认页面](https://felord.blog.csdn.net/article/details/123821842)
 - [35-OAuth2授权服务器客户端认证配置](https://felord.blog.csdn.net/article/details/123871892)
 - [36-OAuth2客户端认证过滤器详解](https://felord.blog.csdn.net/article/details/123899496)
+- [37-Spring Authorization Server利用JWT对OAuth2客户端进行认证（国内首发）
+  ](https://felord.blog.csdn.net/article/details/123960371)
 - 未上架，待补充 [催更](https://asset.felord.cn/blog/20210224102609.png)
 ## 登录方式
 登录方式有三种。
