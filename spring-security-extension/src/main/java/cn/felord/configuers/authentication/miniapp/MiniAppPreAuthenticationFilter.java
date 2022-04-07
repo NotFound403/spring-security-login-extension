@@ -84,12 +84,12 @@ public class MiniAppPreAuthenticationFilter extends OncePerRequestFilter {
     private static class PreAuthResponseWriter extends ResponseWriter {
 
         @Override
-        protected Map<String,Object> body(HttpServletRequest request) {
+        protected Map<String, Object> body(HttpServletRequest request) {
             WechatLoginResponse miniAuth = (WechatLoginResponse) request.getAttribute(ATTRIBUTE_KEY);
-            Map<String,Object> map = new HashMap<>(3);
+            Map<String, Object> map = new HashMap<>(3);
             map.put("code", HttpStatus.OK.value());
-            map.put("data",miniAuth);
-            map.put("message",HttpStatus.OK.getReasonPhrase());
+            map.put("data", miniAuth);
+            map.put("message", HttpStatus.OK.getReasonPhrase());
             return map;
         }
     }

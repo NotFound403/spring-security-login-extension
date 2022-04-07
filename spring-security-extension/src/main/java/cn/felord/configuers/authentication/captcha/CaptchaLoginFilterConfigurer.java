@@ -1,6 +1,7 @@
 package cn.felord.configuers.authentication.captcha;
 
 import cn.felord.configuers.authentication.AbstractLoginFilterConfigurer;
+import cn.felord.configuers.authentication.LoginFilterSecurityConfigurer;
 import cn.felord.handler.LoginAuthenticationSuccessHandler;
 import cn.felord.jwt.JwtTokenGenerator;
 import org.springframework.context.ApplicationContext;
@@ -11,7 +12,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.util.Assert;
 
-public class CaptchaLoginFilterConfigurer<H extends HttpSecurityBuilder<H>> extends AbstractLoginFilterConfigurer<H, CaptchaLoginFilterConfigurer<H>, CaptchaAuthenticationFilter> {
+public class CaptchaLoginFilterConfigurer<H extends HttpSecurityBuilder<H>> extends AbstractLoginFilterConfigurer<H, CaptchaLoginFilterConfigurer<H>, CaptchaAuthenticationFilter, LoginFilterSecurityConfigurer<H>> {
 
     private CaptchaUserDetailsService captchaUserDetailsService;
 
@@ -19,8 +20,8 @@ public class CaptchaLoginFilterConfigurer<H extends HttpSecurityBuilder<H>> exte
 
     private JwtTokenGenerator jwtTokenGenerator;
 
-    public CaptchaLoginFilterConfigurer() {
-        super(new CaptchaAuthenticationFilter(), "/login/captcha");
+    public CaptchaLoginFilterConfigurer(LoginFilterSecurityConfigurer<H> securityConfigurer) {
+        super(securityConfigurer, new CaptchaAuthenticationFilter(), "/login/captcha");
     }
 
     public CaptchaLoginFilterConfigurer<H> captchaUserDetailsService(CaptchaUserDetailsService captchaUserDetailsService) {

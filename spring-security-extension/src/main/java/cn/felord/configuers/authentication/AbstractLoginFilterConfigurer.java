@@ -6,11 +6,13 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationDetailsSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.config.annotation.SecurityConfigurerAdapter;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer;
 import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.PortMapper;
 import org.springframework.security.web.authentication.*;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
@@ -36,8 +38,10 @@ import java.util.Collections;
  * @param <C>
  * @param <F>
  */
-public abstract class AbstractLoginFilterConfigurer<H extends HttpSecurityBuilder<H>, C extends AbstractLoginFilterConfigurer<H, C, F>, F extends AbstractAuthenticationProcessingFilter>
-        extends AbstractHttpConfigurer<AbstractLoginFilterConfigurer<H, C, F>, H> {
+public abstract class AbstractLoginFilterConfigurer<H extends HttpSecurityBuilder<H>, C extends AbstractLoginFilterConfigurer<H, C, F, A>, F extends AbstractAuthenticationProcessingFilter, A extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, H>>
+        extends AbstractHttpConfigurer<AbstractLoginFilterConfigurer<H, C, F, A>, H> {
+    private final A configurerAdapter;
+
     private F authFilter;
 
     private AuthenticationDetailsSource<HttpServletRequest, ?> authenticationDetailsSource;
@@ -55,7 +59,10 @@ public abstract class AbstractLoginFilterConfigurer<H extends HttpSecurityBuilde
     private String failureUrl;
 
 
-    public AbstractLoginFilterConfigurer(F authenticationFilter, String defaultLoginProcessingUrl) {
+    public AbstractLoginFilterConfigurer(A configurerAdapter,
+                                         F authenticationFilter,
+                                         String defaultLoginProcessingUrl) {
+        this.configurerAdapter = configurerAdapter;
         this.authFilter = authenticationFilter;
         if (defaultLoginProcessingUrl != null) {
             loginProcessingUrl(defaultLoginProcessingUrl);
@@ -119,8 +126,12 @@ public abstract class AbstractLoginFilterConfigurer<H extends HttpSecurityBuilde
         return getSelf();
     }
 
+    public A with() {
+        return this.configurerAdapter;
+    }
+
     @Override
-    public void init(H http) throws Exception {
+    public void init(H http) {
         updateAccessDefaults(http);
         updateAuthenticationDefaults();
         registerDefaultAuthenticationEntryPoint(http);
@@ -210,6 +221,7 @@ public abstract class AbstractLoginFilterConfigurer<H extends HttpSecurityBuilde
         }
         return null;
     }
+
     /**
      * Gets the Authentication Filter
      *

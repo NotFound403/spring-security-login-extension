@@ -19,12 +19,12 @@ public class CaptchaAuthenticationToken extends AbstractAuthenticationToken {
     /**
      * 此构造函数用来初始化未授信凭据.
      *
-     * @param principal   the principal
-     * @param captcha the captcha
+     * @param principal the principal
+     * @param captcha   the captcha
      */
     public CaptchaAuthenticationToken(Object principal, String captcha) {
         super(null);
-        this.principal =  principal;
+        this.principal = principal;
         this.captcha = captcha;
         setAuthenticated(false);
     }
@@ -32,7 +32,7 @@ public class CaptchaAuthenticationToken extends AbstractAuthenticationToken {
     /**
      * 此构造函数用来初始化授信凭据.
      *
-     * @param principal       the principal
+     * @param principal   the principal
      * @param captcha     the captcha
      * @param authorities the authorities
      */

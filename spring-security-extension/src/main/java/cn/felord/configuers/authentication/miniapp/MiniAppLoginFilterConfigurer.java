@@ -2,6 +2,7 @@ package cn.felord.configuers.authentication.miniapp;
 
 
 import cn.felord.configuers.authentication.AbstractLoginFilterConfigurer;
+import cn.felord.configuers.authentication.LoginFilterSecurityConfigurer;
 import cn.felord.handler.LoginAuthenticationSuccessHandler;
 import cn.felord.jwt.JwtTokenGenerator;
 import org.springframework.context.ApplicationContext;
@@ -13,7 +14,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.util.Assert;
 
-public class MiniAppLoginFilterConfigurer<H extends HttpSecurityBuilder<H>> extends AbstractLoginFilterConfigurer<H, MiniAppLoginFilterConfigurer<H>, MiniAppAuthenticationFilter> {
+public class MiniAppLoginFilterConfigurer<H extends HttpSecurityBuilder<H>> extends AbstractLoginFilterConfigurer<H, MiniAppLoginFilterConfigurer<H>, MiniAppAuthenticationFilter, LoginFilterSecurityConfigurer<H>> {
     private MiniAppUserDetailsService miniAppUserDetailsService;
 
     private JwtTokenGenerator jwtTokenGenerator;
@@ -22,8 +23,8 @@ public class MiniAppLoginFilterConfigurer<H extends HttpSecurityBuilder<H>> exte
 
     private MiniAppSessionKeyCache miniAppSessionKeyCache;
 
-    public MiniAppLoginFilterConfigurer() {
-        super(new MiniAppAuthenticationFilter(), "/login/miniapp");
+    public MiniAppLoginFilterConfigurer(LoginFilterSecurityConfigurer<H> securityConfigurer) {
+        super(securityConfigurer, new MiniAppAuthenticationFilter(), "/login/miniapp");
     }
 
     public MiniAppLoginFilterConfigurer<H> miniAppUserDetailsService(MiniAppUserDetailsService miniAppUserDetailsService) {

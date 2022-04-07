@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplicat
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,7 +37,7 @@ import java.util.stream.Collectors;
  *
  * @author n1
  */
-@EnableWebSecurity(debug = true)
+//@EnableWebSecurity(debug = true)
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 public class WebSecurityConfiguration {
@@ -63,6 +62,9 @@ public class WebSecurityConfiguration {
                 .formLogin()
                 .and()
                 .apply(new LoginFilterSecurityConfigurer<>())
+//                .captchaLogin()
+//                .with()
+//                .miniAppLogin()
                 // 验证码登录
                 .captchaLogin(captchaLoginConfigurer ->
                                 // 验证码校验 1 在此处配置 优先级最高 2 注册为Spring Bean 可以免配置
