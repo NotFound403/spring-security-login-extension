@@ -60,6 +60,7 @@ public class WebSecurityConfiguration {
                 .and()
                 // 默认form表单登录
                 .formLogin()
+                //*******************************************上面是传统玩法*************************************************
                 .and()
                 .apply(new LoginFilterSecurityConfigurer<>())
 //                .captchaLogin()
@@ -77,6 +78,7 @@ public class WebSecurityConfiguration {
                 )
                 // 小程序登录 同时支持多个小程序
                 .miniAppLogin(miniAppLoginConfigurer -> miniAppLoginConfigurer
+                                // 实现小程序多租户
                                 // 根据请求携带的clientid 查询小程序的appid和secret 1 在此处配置 优先级最高 2 注册为Spring Bean 可以免配置
                                 .miniAppClientService(this::miniAppClientMock)
                                 // 小程序用户 自动注册和检索  1 在此处配置 优先级最高 2 注册为Spring Bean 可以免配置
@@ -101,6 +103,7 @@ public class WebSecurityConfiguration {
 
         @Override
         public String get(String cacheKey) {
+            // 模拟 sessionkey 缓存
             return "xxxxxxxxxx";
         }
     }
@@ -108,7 +111,7 @@ public class WebSecurityConfiguration {
     static class MiniAppUserDetailsServiceMock implements MiniAppUserDetailsService {
         @Override
         public UserDetails register(MiniAppRequest request) {
-            return // 用户名
+            return // 模拟 微信小程序用户注册
                     User.withUsername(request.getOpenId())
                             // 密码
                             .password("password")
@@ -118,7 +121,7 @@ public class WebSecurityConfiguration {
 
         @Override
         public UserDetails loadByOpenId(String clientId, String openId) {
-            return // 用户名
+            return // 模拟 根据openid 查询 小程序用户信息
                     User.withUsername(openId)
                             // 密码
                             .password("password")
